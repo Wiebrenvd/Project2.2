@@ -1,4 +1,4 @@
-package shoutingMTserver;
+package shoutingMTServer;
 
 import java.net.*;
 import java.io.*;

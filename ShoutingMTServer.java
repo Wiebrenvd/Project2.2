@@ -1,4 +1,4 @@
-package shoutingMTserver;
+package shoutingMTServer;
 
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -18,9 +18,11 @@ public class ShoutingMTServer {
 			
 			//Start 5 threads voor data afhandeling naar db
 			Thread parser = null; 
+			for(int i = 0;i<7;i++) {
 				parser = new Thread(new Parser());
 				parser.setPriority(10);
 				parser.start();
+			}
 		
 			
 			while (true) {

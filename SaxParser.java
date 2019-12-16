@@ -1,4 +1,4 @@
-package shoutingMTserver;
+package shoutingMTServer;
 
 import java.io.StringReader;
 import java.sql.*;
@@ -38,10 +38,12 @@ class Parser implements Runnable {
 			while(true) 
 			{
 				if(ShoutingMTServer.xmlData.size() > 0) {
-					//System.out.println(xmlData.size());
+					//System.out.println(ShoutingMTServer.xmlData.size());
 					String data = ShoutingMTServer.xmlData.get(0);
-					data = data.replaceAll("\\s+","");
+					//data.replaceAll("\\s+","");
 					ShoutingMTServer.xmlData.remove(0);
+					if(data != null) {
+					System.out.println(data);
 					src.setCharacterStream(new StringReader(data));
 					doc = builder.parse(src);
 					stn = doc.getElementsByTagName("STN").item(0).getTextContent();
@@ -69,6 +71,7 @@ class Parser implements Runnable {
 						stmt.executeUpdate("INSERT INTO unwdmi.measurements VALUES (" + stn + ",'" + date + "','" + time + "'," +temp+ "," +dewp+ "," +stp+ "," +slp+ "," +visib+ "," +wdsp+ "," +prcp+ "," +sndp+ "," +frshtt+ "," +cldc+ "," +wnddir +")");
 						System.out.println("insert done. inserts left to do: " + ShoutingMTServer.xmlData.size());
 					}
+					}
 				}else 
 				{
 					System.out.println("No data found to insert");
@@ -78,6 +81,7 @@ class Parser implements Runnable {
 			//con.close();  
 			}catch(Exception e){ 
 				System.out.println(e + " NULL");
+				e.printStackTrace();
 			}
 	}  
 }  

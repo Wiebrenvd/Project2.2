@@ -1,4 +1,4 @@
-package shoutingMTserver;
+package shoutingMTServer;
 
 public class xml {
 	
