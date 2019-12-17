@@ -60,7 +60,7 @@ class Parser implements Runnable {
 							System.out.println("Data incomplete");
 						}else {
 							//System.out.println("(" + stn + ",'" + date + "','" + time + "'," +temp+ "," +dewp+ "," +stp+ "," +slp+ "," +visib+ "," +wdsp+ "," +prcp+ "," +sndp+ "," +frshtt+ "," +cldc+ "," +wnddir +")");
-							ShoutingMTServer.insertData.add("(" + stn + ",'" + date + "','" + time + "'," +temp+ "," +dewp+ "," +stp+ "," +slp+ "," +visib+ "," +wdsp+ "," +prcp+ "," +sndp+ "," +frshtt+ "," +cldc+ "," +wnddir +")");
+							ShoutingMTServer.xmlData.add("(" + stn + ",'" + date + "','" + time + "'," +temp+ "," +dewp+ "," +stp+ "," +slp+ "," +visib+ "," +wdsp+ "," +prcp+ "," +sndp+ "," +frshtt+ "," +cldc+ "," +wnddir +")");
 						}
 					}
 				}else 

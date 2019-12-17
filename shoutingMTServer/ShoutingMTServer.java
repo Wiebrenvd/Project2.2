@@ -1,5 +1,10 @@
 package shoutingMTServer;
 
+import org.xml.sax.SAXException;
+
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -9,7 +14,6 @@ public class ShoutingMTServer {
 	private static final int maxnrofConnections=800;
 	public static TelSemafoor mijnSemafoor = new TelSemafoor(maxnrofConnections);
 	public static ArrayList<String> xmlData = new ArrayList<String>();
-	public static ArrayList<String> insertData = new ArrayList<String>();
 	
 	public static void main(String[] args) {
 		Socket connection;
@@ -18,16 +22,16 @@ public class ShoutingMTServer {
 			System.err.println("MT Server started..bring on the load, to a maximum of: " + maxnrofConnections);
 			
 			//Start 5 threads voor data afhandeling naar db
-			 
-			
-			
-			Thread inserts = new Thread(new Inserts());
-			inserts.setPriority(10);
-			inserts.start();
-			
-			Thread parser = new Thread(new Parser());
-			parser.setPriority(10);
-			parser.start();
+			Thread parser = null; 
+			for(int i = 0;i<7;i++) {
+				SAXParserFactory factory = SAXParserFactory.newInstance();
+				SAXParser saxParser = factory.newSAXParser();
+
+				SAXHandler SAXHandler = new SAXHandler();
+				saxParser.parse("test.xml", SAXHandler);
+				parser.setPriority(10);
+				parser.start();
+			}
 		
 			
 			while (true) {
@@ -38,6 +42,10 @@ public class ShoutingMTServer {
 			}
 		}
 
-		catch (java.io.IOException ioe) { }
+		catch (java.io.IOException ioe) { } catch (SAXException e) {
+			e.printStackTrace();
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		}
 	}
 }
