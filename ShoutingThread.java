@@ -19,8 +19,6 @@ class Worker implements Runnable
 			
 			//lets check if we already accepted maximum number of connections
 			ShoutingMTServer.mijnSemafoor.probeer();
-			
-			PrintWriter pout = new PrintWriter(connection.getOutputStream(), true);
 			BufferedReader bin = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			
 			String currentdata = "";

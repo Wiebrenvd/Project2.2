@@ -17,8 +17,8 @@ class Inserts implements Runnable {
 			String insert = "";
 			ArrayList<String> templist = new ArrayList<String>();
 			while(true) {
-				if(ShoutingMTServer.insertData.size()>100) {
-					templist = ShoutingMTServer.insertData;
+				if(ShoutingMTServer.insertData.size() > 5000) {
+					templist = new ArrayList<String>(ShoutingMTServer.insertData);
 					ShoutingMTServer.insertData.clear();
 					
 					//building insert string
@@ -36,7 +36,7 @@ class Inserts implements Runnable {
 					System.out.println(insert);
 					stmt.executeUpdate(insert);
 				}else {
-					//System.out.println("No Inserts found" + ShoutingMTServer.insertData.size());
+					System.out.println("No Inserts found");
 				}
 			}
 		} catch (ClassNotFoundException | SQLException e) {

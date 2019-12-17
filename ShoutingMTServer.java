@@ -19,13 +19,15 @@ public class ShoutingMTServer {
 			
 			//Start 5 threads voor data afhandeling naar db
 			 
-			Thread parser = new Thread(new Parser());
-			parser.setPriority(10);
-			parser.start();
+			
 			
 			Thread inserts = new Thread(new Inserts());
 			inserts.setPriority(10);
 			inserts.start();
+			
+			Thread parser = new Thread(new Parser());
+			parser.setPriority(10);
+			parser.start();
 		
 			
 			while (true) {

@@ -1,7 +1,6 @@
 package shoutingMTServer;
 
 import java.io.StringReader;
-import java.sql.*;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -60,13 +59,13 @@ class Parser implements Runnable {
 						if(stn==""||date==""||time==""||temp==""||dewp==""||stp==""||slp==""||visib==""||wdsp==""||prcp==""||sndp==""||frshtt==""||cldc==""||wnddir=="") {
 							System.out.println("Data incomplete");
 						}else {
-							System.out.println("(" + stn + ",'" + date + "','" + time + "'," +temp+ "," +dewp+ "," +stp+ "," +slp+ "," +visib+ "," +wdsp+ "," +prcp+ "," +sndp+ "," +frshtt+ "," +cldc+ "," +wnddir +")");
+							//System.out.println("(" + stn + ",'" + date + "','" + time + "'," +temp+ "," +dewp+ "," +stp+ "," +slp+ "," +visib+ "," +wdsp+ "," +prcp+ "," +sndp+ "," +frshtt+ "," +cldc+ "," +wnddir +")");
 							ShoutingMTServer.insertData.add("(" + stn + ",'" + date + "','" + time + "'," +temp+ "," +dewp+ "," +stp+ "," +slp+ "," +visib+ "," +wdsp+ "," +prcp+ "," +sndp+ "," +frshtt+ "," +cldc+ "," +wnddir +")");
 						}
 					}
 				}else 
 				{
-					System.out.println(ShoutingMTServer.insertData.size());
+					System.out.println("No data found");
 				}
 			}
 			
