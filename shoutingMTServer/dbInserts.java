@@ -21,9 +21,7 @@ class Inserts implements Runnable {
 				if(ShoutingMTServer.insertData.size() > 1000) {
 					templist = new ArrayList<String>(ShoutingMTServer.insertData);
 					ShoutingMTServer.insertData.clear();
-					
-					//building insert string
-					insert = new StringBuilder();
+
 					insert = new StringBuilder("INSERT INTO unwdmi.measurements VALUES");
 					for(int i = 0;i<templist.size();i++) {
 						if(i != templist.size()-1) {
@@ -36,17 +34,11 @@ class Inserts implements Runnable {
 					}
 					System.out.println(insert);
 					stmt.executeUpdate(insert.toString());
-				}else {
-					String tmp = "";
-					tmp +=1;
-					System.out.println("No Inserts found" + ShoutingMTServer.insertData.size());
 				}
 			}
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}  
-		
+		}
 	}
-	
+
 }

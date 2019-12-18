@@ -8,8 +8,8 @@ public class ShoutingMTServer {
 	public static final int PORT = 2500;
 	private static final int maxnrofConnections=800;
 	public static TelSemafoor mijnSemafoor = new TelSemafoor(maxnrofConnections);
-	public static ArrayList<String> xmlData = new ArrayList<String>();
-	public static ArrayList<String> insertData = new ArrayList<String>();
+	public static volatile ArrayList<String> xmlData = new ArrayList<String>();
+	public static volatile ArrayList<String> insertData = new ArrayList<String>();
 	
 	public static void main(String[] args) {
 		Socket connection;
