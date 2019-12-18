@@ -12,28 +12,29 @@ class Parser implements Runnable {
 
 	@Override
 	public void run() {
+		String stn = ""; 
+		String date = ""; 
+		String time = "";
+		String temp = ""; 
+		String dewp = ""; 
+		String stp = "";
+		String slp = "";
+		String visib = "";
+		String wdsp = "";
+		String prcp = "";
+		String sndp = "";
+		String frshtt = "";
+		String cldc = "";
+		String wnddir = ""; 
 		try{  
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			InputSource src = new InputSource();
 			Document doc = null; 
-			String stn = ""; 
-			String date = ""; 
-			String time = "";
-			String temp = ""; 
-			String dewp = ""; 
-			String stp = "";
-			String slp = "";
-			String visib = "";
-			String wdsp = "";
-			String prcp = "";
-			String sndp = "";
-			String frshtt = "";
-			String cldc = "";
-			String wnddir = ""; 
-			while(true) 
+			
+			while(ShoutingMTServer.xmlData !=null) 
 			{
 				if(ShoutingMTServer.xmlData.size() > 0) {
-					//System.out.println(ShoutingMTServer.xmlData.size());
+					System.out.println(ShoutingMTServer.xmlData.get(0));
 					String data = ShoutingMTServer.xmlData.get(0);
 					//data.replaceAll("\\s+","");
 					ShoutingMTServer.xmlData.remove(0);
@@ -57,7 +58,7 @@ class Parser implements Runnable {
 						wnddir = doc.getElementsByTagName("WNDDIR").item(0).getTextContent();
 						
 						if(stn==""||date==""||time==""||temp==""||dewp==""||stp==""||slp==""||visib==""||wdsp==""||prcp==""||sndp==""||frshtt==""||cldc==""||wnddir=="") {
-							System.out.println("Data incomplete");
+							//System.out.println("Data incomplete");
 						}else {
 							//System.out.println("(" + stn + ",'" + date + "','" + time + "'," +temp+ "," +dewp+ "," +stp+ "," +slp+ "," +visib+ "," +wdsp+ "," +prcp+ "," +sndp+ "," +frshtt+ "," +cldc+ "," +wnddir +")");
 							ShoutingMTServer.insertData.add("(" + stn + ",'" + date + "','" + time + "'," +temp+ "," +dewp+ "," +stp+ "," +slp+ "," +visib+ "," +wdsp+ "," +prcp+ "," +sndp+ "," +frshtt+ "," +cldc+ "," +wnddir +")");

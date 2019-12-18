@@ -17,10 +17,6 @@ public class ShoutingMTServer {
 			ServerSocket server = new ServerSocket(PORT);
 			System.err.println("MT Server started..bring on the load, to a maximum of: " + maxnrofConnections);
 			
-			//Start 5 threads voor data afhandeling naar db
-			 
-			
-			
 			Thread inserts = new Thread(new Inserts());
 			inserts.setPriority(10);
 			inserts.start();
@@ -38,6 +34,8 @@ public class ShoutingMTServer {
 			}
 		}
 
-		catch (java.io.IOException ioe) { }
+		catch (java.io.IOException ioe) { 
+			ioe.printStackTrace();
+		}
 	}
 }
