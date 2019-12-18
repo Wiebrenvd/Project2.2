@@ -10,7 +10,6 @@ import org.xml.sax.InputSource;
 
 class Parser implements Runnable {
 
-	@Override
 	public void run() {
 		String stn = ""; 
 		String date = ""; 
@@ -29,17 +28,13 @@ class Parser implements Runnable {
 		try{  
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			InputSource src = new InputSource();
-			Document doc = null; 
+			Document doc;
 			
-			while(ShoutingMTServer.xmlData !=null) 
-			{
+			while(ShoutingMTServer.xmlData !=null) {
 				if(ShoutingMTServer.xmlData.size() > 0) {
-					//System.out.println(ShoutingMTServer.xmlData.get(0));
 					String data = ShoutingMTServer.xmlData.get(0);
-					//data.replaceAll("\\s+","");
 					ShoutingMTServer.xmlData.remove(0);
 					if(data != null) {
-						//System.out.println(data);
 						src.setCharacterStream(new StringReader(data));
 						doc = builder.parse(src);
 						stn = doc.getElementsByTagName("STN").item(0).getTextContent();
@@ -57,24 +52,17 @@ class Parser implements Runnable {
 						cldc = doc.getElementsByTagName("CLDC").item(0).getTextContent();
 						wnddir = doc.getElementsByTagName("WNDDIR").item(0).getTextContent();
 
-
-						if(stn.equals("") || date.equals("") || time.equals("") || temp.equals("") || dewp.equals("") || stp.equals("") || slp.equals("") || visib.equals("") || wdsp.equals("") || prcp.equals("") || sndp.equals("") || frshtt.equals("") || cldc.equals("") || wnddir.equals("")) {
-							//System.out.println("Data incomplete");
-						}else {
-							//System.out.println("(" + stn + ",'" + date + "','" + time + "'," +temp+ "," +dewp+ "," +stp+ "," +slp+ "," +visib+ "," +wdsp+ "," +prcp+ "," +sndp+ "," +frshtt+ "," +cldc+ "," +wnddir +")");
+						if(!stn.equals("") && !date.equals("") && !time.equals("") && !temp.equals("") && !dewp.equals("") && !stp.equals("") && !slp.equals("") && !visib.equals("") && !wdsp.equals("") && !prcp.equals("") && !sndp.equals("") && !frshtt.equals("") && !cldc.equals("") && !wnddir.equals("")) {
 							ShoutingMTServer.insertData.add("(" + stn + ",'" + date + "','" + time + "'," +temp+ "," +dewp+ "," +stp+ "," +slp+ "," +visib+ "," +wdsp+ "," +prcp+ "," +sndp+ "," +frshtt+ "," +cldc+ "," +wnddir +")");
 						}
 					}
-				}else
-				{
+				}else {
 					System.out.println("No data found");
 				}
 			}
-			
-			//con.close();  
-			}catch(Exception e){ 
-				System.out.println(e + " NULL");
-				e.printStackTrace();
-			}
+		}catch(Exception e){
+			System.out.println(e + " NULL");
+			e.printStackTrace();
+		}
 	}  
 }  
