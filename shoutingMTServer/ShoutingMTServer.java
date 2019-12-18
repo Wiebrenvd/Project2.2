@@ -29,8 +29,7 @@ public class ShoutingMTServer {
 
 				SAXHandler SAXHandler = new SAXHandler();
 				saxParser.parse("test.xml", SAXHandler);
-				parser.setPriority(10);
-				parser.start();
+
 			}
 		
 			

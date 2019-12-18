@@ -17,7 +17,7 @@ class Inserts implements Runnable {
 			String insert = "";
 			ArrayList<String> templist = new ArrayList<String>();
 			while(true) {
-				if(ShoutingMTServer.xmlData.size() > 5000) {
+				if(ShoutingMTServer.xmlData.size() > 1) {
 					templist = new ArrayList<String>(ShoutingMTServer.xmlData);
 					ShoutingMTServer.xmlData.clear();
 					

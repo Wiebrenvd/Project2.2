@@ -5,43 +5,43 @@ import java.util.Date;
 public class Measurement {
 
 
-        private int stn;
-        private Date date;
+        private String stn;
+        private String date;
         private String time;
-        private float temperature;
-        private float stp;
-        private float dew_point;
-        private float sea_pressure;
-        private float wind_speed;
-        private float percipation;
-        private float snow;
-        private float visibility;
-        private int occurances;
-        private float citizenry;
-        private int wind_direction;
+        private String temperature;
+        private String stp;
+        private String dew_point;
+        private String sea_pressure;
+        private String wind_speed;
+        private String percipation;
+        private String snow;
+        private String visibility;
+        private String occurances;
+        private String citizenry;
+        private String wind_direction;
 
 
-        public float getPercipation() {
+        public String getPercipation() {
             return percipation;
         }
 
-        public void setPercipation(float percipation) {
+        public void setPercipation(String percipation) {
             this.percipation = percipation;
         }
 
-        public int getStn() {
+        public String getStn() {
             return stn;
         }
 
-        public void setStn(int stn) {
+        public void setStn(String stn) {
             this.stn = stn;
         }
 
-        public Date getDate() {
+        public String getDate() {
             return date;
         }
 
-        public void setDate(Date date) {
+        public void setDate(String date) {
             this.date = date;
         }
 
@@ -53,83 +53,83 @@ public class Measurement {
             this.time = time;
         }
 
-        public float getTemperature() {
+        public String getTemperature() {
             return temperature;
         }
 
-        public void setTemperature(float temperature) {
+        public void setTemperature(String temperature) {
             this.temperature = temperature;
         }
 
-        public float getDew_point() {
+        public String getDew_point() {
             return dew_point;
         }
 
-        public void setDew_point(float dew_point) {
+        public void setDew_point(String dew_point) {
             this.dew_point = dew_point;
         }
 
-        public float getSea_pressure() {
+        public String getSea_pressure() {
             return sea_pressure;
         }
 
-        public void setSea_pressure(float sea_pressure) {
+        public void setSea_pressure(String sea_pressure) {
             this.sea_pressure = sea_pressure;
         }
 
-        public float getWind_speed() {
+        public String getWind_speed() {
             return wind_speed;
         }
 
-        public void setWind_speed(float wind_speed) {
+        public void setWind_speed(String wind_speed) {
             this.wind_speed = wind_speed;
         }
 
-        public float getSnow() {
+        public String getSnow() {
             return snow;
         }
 
-        public void setSnow(float snow) {
+        public void setSnow(String snow) {
             this.snow = snow;
         }
 
-        public int getOccurances() {
+        public String getOccurances() {
             return occurances;
         }
 
-        public void setOccurances(int occurances) {
+        public void setOccurances(String occurances) {
             this.occurances = occurances;
         }
 
-        public float getCitizenry() {
+        public String getCitizenry() {
             return citizenry;
         }
 
-        public void setCitizenry(float citizenry) {
+        public void setCitizenry(String citizenry) {
             this.citizenry = citizenry;
         }
 
-        public int getWind_direction() {
+        public String getWind_direction() {
             return wind_direction;
         }
 
-        public void setWind_direction(int wind_direction) {
+        public void setWind_direction(String wind_direction) {
             this.wind_direction = wind_direction;
         }
 
-    public float getStp() {
+    public String getStp() {
         return stp;
     }
 
-    public void setStp(float stp) {
+    public void setStp(String stp) {
         this.stp = stp;
     }
 
-    public float getVisibility() {
+    public String getVisibility() {
         return visibility;
     }
 
-    public void setVisibility(float visibility) {
+    public void setVisibility(String visibility) {
         this.visibility = visibility;
     }
 }
