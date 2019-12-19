@@ -3,13 +3,15 @@ package shoutingMTServer;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class ShoutingMTServer {
 	public static final int PORT = 2500;
 	private static final int maxnrofConnections=800;
 	public static TelSemafoor mijnSemafoor = new TelSemafoor(maxnrofConnections);
 	public static volatile ArrayList<String> xmlData = new ArrayList<String>();
-	public static volatile ArrayList<String> insertData = new ArrayList<String>();
+	public static volatile List<String> insertData = Collections.synchronizedList(new ArrayList<String>());
 	
 	public static void main(String[] args) {
 		Socket connection;
@@ -20,6 +22,18 @@ public class ShoutingMTServer {
 			Thread inserts = new Thread(new Inserts());
 			inserts.setPriority(10);
 			inserts.start();
+
+			Thread inserts2 = new Thread(new Inserts());
+			inserts2.setPriority(10);
+			inserts2.start();
+
+			Thread inserts3 = new Thread(new Inserts());
+			inserts3.setPriority(10);
+			inserts3.start();
+
+			Thread inserts4 = new Thread(new Inserts());
+			inserts4.setPriority(10);
+			inserts4.start();
 			
 			Thread parser = new Thread(new Parser());
 			parser.setPriority(10);

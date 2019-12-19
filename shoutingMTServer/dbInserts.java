@@ -16,14 +16,14 @@ class Inserts implements Runnable {
 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/unwdmi","root","");
 			Statement stmt = con.createStatement(); 
 			StringBuilder insert = new StringBuilder();
-			ArrayList<String> templist = new ArrayList<String>();
+			ArrayList<String> templist = new ArrayList<String>(ShoutingMTServer.insertData);
 			//noinspection InfiniteLoopStatement
 			while(true) {
 				if(ShoutingMTServer.insertData.size() > 1000) {
 					templist = new ArrayList<String>(ShoutingMTServer.insertData);
 					ShoutingMTServer.insertData.clear();
 
-					final int size = 1000;
+					final int size = 2500;
 					int lists = 0;
 					for (int start = 0; start < templist.size(); start += size) {
 						int end = Math.min(start + size, templist.size());
