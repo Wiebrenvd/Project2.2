@@ -38,7 +38,7 @@ class Worker implements Runnable
 	
 			// now close the socket connection
 			connection.close();
-			System.err.println("Connection closed: workerthread ending");
+			// System.err.println("Connection closed: workerthread ending");
 			// upping the semaphore.. since the connnection is gone....
 			ShoutingMTServer.mijnSemafoor.verhoog();
 		}
