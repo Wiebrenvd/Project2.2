@@ -23,7 +23,8 @@ class Inserts implements Runnable {
 					templist = new ArrayList<String>(ShoutingMTServer.insertData);
 					ShoutingMTServer.insertData.clear();
 
-					int size = 1000;
+					final int size = 1000;
+					int lists = 0;
 					for (int start = 0; start < templist.size(); start += size) {
 						int end = Math.min(start + size, templist.size());
 						List<String> sublist = templist.subList(start, end);
@@ -39,8 +40,10 @@ class Inserts implements Runnable {
 						}
 						//System.out.println(insert);
 						stmt.executeUpdate(insert.toString());
+						lists++;
 					}
-					System.out.println(templist.size());
+					System.out.println("Amounts of lists inserted done: " + lists);
+					System.out.println("Templist size: " + templist.size());
 				}
 			}
 		} catch (ClassNotFoundException | SQLException e) {
