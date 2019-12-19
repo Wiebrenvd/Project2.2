@@ -42,8 +42,6 @@ class Inserts implements Runnable {
 						stmt.executeUpdate(insert.toString());
 						lists++;
 					}
-					System.out.println("Amounts of lists inserted done: " + lists);
-					System.out.println("Templist size: " + templist.size());
 				}
 			}
 		} catch (ClassNotFoundException | SQLException e) {
