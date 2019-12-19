@@ -10,7 +10,7 @@ import org.xml.sax.InputSource;
 
 class Parser implements Runnable {
 
-	public void run() {
+	public synchronized void run() {
 		try{  
 			DocumentBuilder builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
 			InputSource src = new InputSource();

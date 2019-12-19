@@ -7,9 +7,11 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 class Inserts implements Runnable {
+
+	private static int runs = 0;
 	
 	@Override
-	public void run() {
+	public synchronized void run() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/unwdmi","root","");
@@ -32,7 +34,8 @@ class Inserts implements Runnable {
 							
 						}
 					}
-					System.out.println(insert);
+					runs++;
+					System.out.println("Inserts done: " + runs);
 					stmt.executeUpdate(insert.toString());
 				}
 			}
