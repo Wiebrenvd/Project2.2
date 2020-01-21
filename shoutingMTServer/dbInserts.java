@@ -13,7 +13,7 @@ class Inserts implements Runnable {
 	public void run() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/unwdmi","root","");
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3307/unwdmi","root","");
 			Statement stmt = con.createStatement(); 
 			StringBuilder insert = new StringBuilder();
 			ArrayList<String> templist = new ArrayList<String>(ShoutingMTServer.insertData);
