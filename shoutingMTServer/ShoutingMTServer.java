@@ -22,7 +22,7 @@ public class ShoutingMTServer {
 			Thread inserts = new Thread(new Inserts());
 			inserts.setPriority(10);
 			inserts.start();
-
+//
 			
 			Thread parser = new Thread(new Saxparser());
 			parser.setPriority(10);
