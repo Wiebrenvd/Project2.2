@@ -23,19 +23,8 @@ public class ShoutingMTServer {
 			inserts.setPriority(10);
 			inserts.start();
 
-			Thread inserts2 = new Thread(new Inserts());
-			inserts2.setPriority(10);
-			inserts2.start();
-
-			Thread inserts3 = new Thread(new Inserts());
-			inserts3.setPriority(10);
-			inserts3.start();
-
-			Thread inserts4 = new Thread(new Inserts());
-			inserts4.setPriority(10);
-			inserts4.start();
 			
-			Thread parser = new Thread(new Parser());
+			Thread parser = new Thread(new Saxparser());
 			parser.setPriority(10);
 			parser.start();
 
