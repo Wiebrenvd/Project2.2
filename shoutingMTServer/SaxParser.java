@@ -116,6 +116,9 @@ class UserHandler extends DefaultHandler {
 
     @Override
     public void characters(char c[], int start, int length) throws SAXException {
+        if(stn && date && time && temp && dewp && stp && slp && visib && wdsp && prcp && sndp && frshtt && cldc && wnddir) {
+            ShoutingMTServer.insertData.add("(" + stn + ",'" + date + "','" + time + "'," +temp+ "," +dewp+ "," +stp+ "," +slp+ "," +visib+ "," +wdsp+ "," +prcp+ "," +sndp+ "," +frshtt+ "," +cldc+ "," +wnddir +")");
+        }
         if (stn) {
             System.out.println("STN: " + new String(c, start, length));
             ShoutingMTServer.insertData.add(new String(c,start,length));
@@ -123,7 +126,7 @@ class UserHandler extends DefaultHandler {
         }
         else if (date) {
             System.out.println("Date " + new String(c, start, length));
-            ShoutingMTServer.insertData.add(new String(c,start,length));
+
             date = false;
         }
         else if (time) {
@@ -184,6 +187,7 @@ class UserHandler extends DefaultHandler {
         else if (wnddir) {
             System.out.println("wnddir " + new String(c, start, length));
             ShoutingMTServer.insertData.add(new String(c,start,length));
+            System.out.println(ShoutingMTServer.xmlData);
             wnddir = false;
         }
 
