@@ -18,15 +18,14 @@ public class ShoutingMTServer {
 		try {
 			ServerSocket server = new ServerSocket(PORT);
 			System.err.println("MT Server started..bring on the load, to a maximum of: " + maxnrofConnections);
-			
-			Thread inserts = new Thread(new Inserts());
-			inserts.setPriority(10);
-			inserts.start();
-//
-			
-			Thread parser = new Thread(new Saxparser());
-			parser.setPriority(10);
-			parser.start();
+
+            Thread parser = new Thread(new Saxparser());
+            parser.setPriority(10);
+            parser.start();
+
+            Thread parser2 = new Thread(new Saxparser());
+            parser2.setPriority(10);
+            parser2.start();
 
 			//noinspection InfiniteLoopStatement
 			while (true) {

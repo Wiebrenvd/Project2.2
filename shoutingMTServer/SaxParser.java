@@ -120,12 +120,12 @@ class UserHandler extends DefaultHandler {
             ShoutingMTServer.insertData.add("(" + stn + ",'" + date + "','" + time + "'," +temp+ "," +dewp+ "," +stp+ "," +slp+ "," +visib+ "," +wdsp+ "," +prcp+ "," +sndp+ "," +frshtt+ "," +cldc+ "," +wnddir +")");
         }
         if (stn) {
-
+            System.out.println("STN: " + new String(c, start, length));
 
             stn = false;
         }
         else if (date) {
-
+            System.out.println("Date " + new String(c, start, length));
 
             date = false;
         }
@@ -187,7 +187,6 @@ class UserHandler extends DefaultHandler {
         else if (wnddir) {
             System.out.println("wnddir " + new String(c, start, length));
 
-            System.out.println(ShoutingMTServer.xmlData);
             wnddir = false;
         }
 
