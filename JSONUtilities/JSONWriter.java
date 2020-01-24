@@ -9,11 +9,13 @@ import java.util.ArrayList;
  */
 public class JSONWriter {
 
-    private ArrayList<JSONDataEntry> dataEntries;
+    public ArrayList<JSONDataEntry> dataEntries;
 
     public JSONWriter(){
         dataEntries = new ArrayList<>();
     }
+
+
 
     public void add(JSONDataEntry entry){
         if(referenceIsTaken(entry.getDataReference())) throw new IllegalArgumentException("Reference " + entry.getDataReference() + " is already taken.");

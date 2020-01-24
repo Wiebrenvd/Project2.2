@@ -7,19 +7,25 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Date;
+
+
 class Inserts implements Runnable {
-	
+
 	@Override
 	public void run() {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3307/unwdmi","root","");
-			Statement stmt = con.createStatement(); 
+			Logger log1 = new Logger("file1.txt");
+
+
 			StringBuilder insert = new StringBuilder();
 			ArrayList<String> templist = new ArrayList<String>(ShoutingMTServer.insertData);
 			//noinspection InfiniteLoopStatement
-			while(true) {
-				if(ShoutingMTServer.insertData.size() > 1000) {
+			while (true) {
+				if (ShoutingMTServer.insertData.size() > 20) {
 					templist = new ArrayList<String>(ShoutingMTServer.insertData);
 					ShoutingMTServer.insertData.clear();
 
@@ -29,24 +35,29 @@ class Inserts implements Runnable {
 						int end = Math.min(start + size, templist.size());
 						List<String> sublist = templist.subList(start, end);
 
-						insert = new StringBuilder("INSERT INTO unwdmi.measurements VALUES");
-						for(int i = 0;i<sublist.size();i++) {
-							if(i != sublist.size()-1) {
-								insert.append(sublist.get(i)).append(",");
+						insert = new StringBuilder("");
+						for (int i = 0; i < sublist.size(); i++) {
+							if (i != sublist.size() - 1) {
+								insert.append(insert).append("\n");
 
-							}else {
+							} else {
 								insert.append(sublist.get(i));
 							}
 						}
-						//System.out.println(insert);
-						stmt.executeUpdate(insert.toString());
-						lists++;
+
 					}
 				}
 			}
-		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
 		}
 	}
-
 }
+
+
+
+
+
+
+
+
+
+

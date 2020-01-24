@@ -13,6 +13,7 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.File;
 import java.io.InputStream;
 import java.io.StringReader;
+import java.io.Writer;
 
 class Saxparser implements Runnable {
     public void run()
@@ -64,6 +65,7 @@ class UserHandler extends DefaultHandler {
     public void startElement(String uri,
                              String localName, String qName, Attributes attributes) throws SAXException {
 
+
         if (qName.equalsIgnoreCase("stn")) {
             stn = true;
         }
@@ -112,83 +114,98 @@ class UserHandler extends DefaultHandler {
     public void endElement(String uri,
                            String localName, String qName) throws SAXException {
         if (qName.equalsIgnoreCase("measurement")) {
+            String s= writer.toString();
+            if(s.contains("STN")&& s.contains("DATE")&&s.contains("TIME")&&s.contains("TEMP")&&s.contains("DEWP")
+                    &&s.contains("STP")&&s.contains("SLP")&&s.contains("VISIB")&&s.contains("WDSP")&&s.contains("PRCP")&&s.contains("SNDP")&&s.contains("FRSHTT")&&s.contains("CLDC")&&s.contains("WNDDIR")){
+                System.out.println(s);
+                ShoutingMTServer.insertData.add(s);
+                writer.clear();
+            }
+           else{
+               writer.clear();
+            }
+
             System.out.println("End Element :" + qName);
         }
     }
 
     @Override
     public void characters(char c[], int start, int length) throws SAXException {
+
         if (stn) {
-            writer.add("STN: " , new String(c, start, length));
-            writer.toString();
+            
+            writer.add("STN" , new String(c, start, length));
             stn=false;
 
         }
         else if (date) {
-            writer.add("Date " , new String(c, start, length));
-            writer.toString();
+            writer.add("DATE" , new String(c, start, length));
+
             date = false;
         }
         else if (time) {
-            writer.add("time: " , new String(c, start, length));
+            writer.add("TIME" , new String(c, start, length));
+
 
             time = false;
         }
         else if (temp) {
-            writer.add("temp: " , new String(c, start, length));
+            writer.add("TEMP" , new String(c, start, length));
 
             temp = false;
         }
         else if (dewp) {
-            writer.add("dewp: " , new String(c, start, length));
+            writer.add("DEWP" , new String(c, start, length));
 
             dewp = false;
         }
         else if (stp) {
-            writer.add("stp " , new String(c, start, length));
+            writer.add("STP" , new String(c, start, length));
 
             stp = false;
         }
         else if (slp) {
-            writer.add("slp " , new String(c, start, length));
+            writer.add( "SLP" , new String(c, start, length));
 
             slp= false;
         }
         else if (visib) {
-            writer.add("visib " , new String(c, start, length));
-            writer.toString();
+            writer.add("VISIB" , new String(c, start, length));
+
             visib = false;
         }
         else if (wdsp) {
-           writer.add("wdsp " , new String(c, start, length));
+           writer.add("WDSP" , new String(c, start, length));
 
             wdsp = false;
         }
         else if (prcp) {
-            writer.add("prcp " , new String(c, start, length));
+            writer.add("PRCP" , new String(c, start, length));
 
             prcp = false;
         }
         else if (sndp) {
-            writer.add("sndp " , new String(c, start, length));
+            writer.add("SNDP" , new String(c, start, length));
 
             sndp = false;
         }
         else if (frshtt) {
-            writer.add("frhstt " , new String(c, start, length));
+            writer.add("FRSHTT" , new String(c, start, length));
 
             frshtt = false;
         }
         else if (cldc) {
-            writer.add("cldc " , new String(c, start, length));
+            writer.add("CLDC" , new String(c, start, length));
 
             cldc = false;
         }
         else if (wnddir) {
-            writer.add("wnddir " , new String(c, start, length));
+            writer.add("WNDDIR" , new String(c, start, length));
+
             wnddir = false;
-            writer.toString();
+
         }
+
 
 
 
