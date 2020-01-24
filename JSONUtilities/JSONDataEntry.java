@@ -68,7 +68,7 @@ public class JSONDataEntry {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(dataReference).append(":");
+        sb.append("\"").append(dataReference).append("\":");
         if(type == Type.STRING){
             sb.append("\"").append(data).append("\"");
         } else {

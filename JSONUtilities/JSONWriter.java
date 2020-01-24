@@ -52,4 +52,9 @@ public class JSONWriter {
         }
         return "{" + sb.toString().substring(1) + "}";
     }
+
+    public void clear(){
+        dataEntries.clear();
+    }
+
 }
