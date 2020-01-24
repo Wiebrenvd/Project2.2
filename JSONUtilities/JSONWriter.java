@@ -9,7 +9,7 @@ import java.util.ArrayList;
  */
 public class JSONWriter {
 
-    public ArrayList<JSONDataEntry> dataEntries;
+    private ArrayList<JSONDataEntry> dataEntries;
 
     public JSONWriter(){
         dataEntries = new ArrayList<>();
