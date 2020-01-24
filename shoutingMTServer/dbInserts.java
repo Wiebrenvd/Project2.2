@@ -21,6 +21,7 @@ class Inserts implements Runnable {
 			Logger log1 = new Logger("file1.txt");
 
 
+
 			StringBuilder insert = new StringBuilder();
 			ArrayList<String> templist = new ArrayList<String>(ShoutingMTServer.insertData);
 			//noinspection InfiniteLoopStatement
@@ -36,18 +37,20 @@ class Inserts implements Runnable {
 						List<String> sublist = templist.subList(start, end);
 
 						insert = new StringBuilder("");
-						for (int i = 0; i < sublist.size(); i++) {
-							if (i != sublist.size() - 1) {
-								insert.append(insert).append("\n");
+						for(String s: sublist){
+							insert.append(s).append("\n");
+						}
+						String s1=insert.toString().trim();
+						log1.log(s1);
 
-							} else {
-								insert.append(sublist.get(i));
-							}
+
 						}
 
 					}
 				}
-			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 }

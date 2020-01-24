@@ -27,6 +27,10 @@ public class ShoutingMTServer {
             //parser2.setPriority(10);
             //parser2.start();
 
+			Thread insert = new Thread(new Inserts());
+			insert.setPriority(10);
+			insert.start();
+
 			//noinspection InfiniteLoopStatement
 			while (true) {
 				connection = server.accept();		
