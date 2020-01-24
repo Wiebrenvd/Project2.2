@@ -57,4 +57,11 @@ public class JSONWriter {
         dataEntries.clear();
     }
 
+    public boolean hasReferences(String... references){
+        for(String reference : references)
+            if(!referenceIsTaken(reference)) return false;
+
+        return true;
+    }
+
 }
