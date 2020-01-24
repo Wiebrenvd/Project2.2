@@ -23,9 +23,9 @@ public class ShoutingMTServer {
             parser.setPriority(10);
             parser.start();
 
-            Thread parser2 = new Thread(new Saxparser());
-            parser2.setPriority(10);
-            parser2.start();
+            //Thread parser2 = new Thread(new Saxparser());
+            //parser2.setPriority(10);
+            //parser2.start();
 
 			//noinspection InfiniteLoopStatement
 			while (true) {

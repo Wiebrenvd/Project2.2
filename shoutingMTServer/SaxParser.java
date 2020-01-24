@@ -1,5 +1,6 @@
 
 package shoutingMTServer;
+import JSONUtilities.JSONWriter;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
@@ -56,6 +57,7 @@ class UserHandler extends DefaultHandler {
     boolean frshtt = false;
     boolean cldc = false;
     boolean wnddir = false;
+    JSONWriter writer= new JSONWriter();
 
 
     @Override
@@ -116,83 +118,79 @@ class UserHandler extends DefaultHandler {
 
     @Override
     public void characters(char c[], int start, int length) throws SAXException {
-        if(stn && date && time && temp && dewp && stp && slp && visib && wdsp && prcp && sndp && frshtt && cldc && wnddir) {
-            ShoutingMTServer.insertData.add("(" + stn + ",'" + date + "','" + time + "'," +temp+ "," +dewp+ "," +stp+ "," +slp+ "," +visib+ "," +wdsp+ "," +prcp+ "," +sndp+ "," +frshtt+ "," +cldc+ "," +wnddir +")");
-        }
         if (stn) {
-            System.out.println("STN: " + new String(c, start, length));
+            writer.add("STN: " , new String(c, start, length));
+            writer.toString();
+            stn=false;
 
-            stn = false;
         }
         else if (date) {
-            System.out.println("Date " + new String(c, start, length));
-
+            writer.add("Date " , new String(c, start, length));
+            writer.toString();
             date = false;
         }
         else if (time) {
-            System.out.println("time: " + new String(c, start, length));
+            writer.add("time: " , new String(c, start, length));
 
             time = false;
         }
         else if (temp) {
-            System.out.println("temp: " + new String(c, start, length));
+            writer.add("temp: " , new String(c, start, length));
 
             temp = false;
         }
         else if (dewp) {
-            System.out.println("dewp: " + new String(c, start, length));
+            writer.add("dewp: " , new String(c, start, length));
 
             dewp = false;
         }
         else if (stp) {
-            System.out.println("stp " + new String(c, start, length));
+            writer.add("stp " , new String(c, start, length));
 
             stp = false;
         }
         else if (slp) {
-            System.out.println("slp " + new String(c, start, length));
+            writer.add("slp " , new String(c, start, length));
 
             slp= false;
         }
         else if (visib) {
-            System.out.println("visib " + new String(c, start, length));
-
+            writer.add("visib " , new String(c, start, length));
+            writer.toString();
             visib = false;
         }
         else if (wdsp) {
-            System.out.println("wdsp " + new String(c, start, length));
+           writer.add("wdsp " , new String(c, start, length));
 
             wdsp = false;
         }
         else if (prcp) {
-            System.out.println("wdsp " + new String(c, start, length));
+            writer.add("prcp " , new String(c, start, length));
 
             prcp = false;
         }
         else if (sndp) {
-            System.out.println("sndp " + new String(c, start, length));
+            writer.add("sndp " , new String(c, start, length));
 
             sndp = false;
         }
         else if (frshtt) {
-            System.out.println("frhstt " + new String(c, start, length));
+            writer.add("frhstt " , new String(c, start, length));
 
             frshtt = false;
         }
         else if (cldc) {
-            System.out.println("cldc " + new String(c, start, length));
+            writer.add("cldc " , new String(c, start, length));
 
             cldc = false;
         }
         else if (wnddir) {
-            System.out.println("wnddir " + new String(c, start, length));
-
+            writer.add("wnddir " , new String(c, start, length));
             wnddir = false;
+            writer.toString();
         }
 
 
 
     }
 }
-
-
