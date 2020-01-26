@@ -15,5 +15,5 @@
 </div>
 <div class="jumbotron" >
         <h3>Devlogic weather data</h3>
-        <p>Resize this responsive page to see the effect!</p>
+
 </div>

@@ -61,7 +61,7 @@
             options:{
             title:{
             display:true,
-            text:'Gemiddelde temperatuur',
+            text:'Average temperature',
             fontSize:25
             },
             legend:{
@@ -100,7 +100,7 @@
                 let massPopChar = new Chart(myChar, {
                 type:'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
                     data:{
-                        labels:['China', 'Khazakstan', 'ect', 'ect', 'ect'],
+                        labels:['0:00', '06:00','12:00','18:00','24:00'],
                             datasets:[
                             {
                                 data:[15,3,8,20,33],
