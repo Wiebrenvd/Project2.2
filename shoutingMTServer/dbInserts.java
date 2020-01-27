@@ -18,7 +18,7 @@ class Inserts implements Runnable {
 	@Override
 	public void run() {
 		try {
-			Logger log1 = new Logger("file1.txt");
+			Logger log1 = new Logger("data.json");
 
 
 

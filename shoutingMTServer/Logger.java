@@ -27,7 +27,7 @@ public class Logger {
         try {
             FileWriter fw = new FileWriter(this.logFile,true);
             String date = new Date().toString();
-            fw.write(date+" : "+s);
+            fw.write(s);
             fw.write(System.lineSeparator());
             fw.close();
         } catch (IOException ex) {
