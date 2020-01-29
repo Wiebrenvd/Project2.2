@@ -6,6 +6,8 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
+import java.time.*;
+import java.time.DayOfWeek;
 
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
@@ -125,7 +127,7 @@ class UserHandler extends DefaultHandler {
                writer.clear();
             }
 
-            System.out.println("End Element :" + qName);
+            //System.out.println("End Element :" + qName);
         }
     }
 
