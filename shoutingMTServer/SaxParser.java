@@ -1,21 +1,17 @@
 
 package shoutingMTServer;
+
 import JSONUtilities.JSONWriter;
 import org.xml.sax.Attributes;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-import org.xml.sax.XMLReader;
 import org.xml.sax.helpers.DefaultHandler;
 import java.time.*;
 import java.time.DayOfWeek;
 
-import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import java.io.File;
-import java.io.InputStream;
 import java.io.StringReader;
-import java.io.Writer;
 
 class Saxparser implements Runnable {
     public void run()
@@ -119,7 +115,7 @@ class UserHandler extends DefaultHandler {
             String s= writer.toString();
             if(s.contains("STN")&& s.contains("DATE")&&s.contains("TIME")&&s.contains("TEMP")&&s.contains("DEWP")
                     &&s.contains("STP")&&s.contains("SLP")&&s.contains("VISIB")&&s.contains("WDSP")&&s.contains("PRCP")&&s.contains("SNDP")&&s.contains("FRSHTT")&&s.contains("CLDC")&&s.contains("WNDDIR")){
-                System.out.println(s);
+                // System.out.println(s);
                 ShoutingMTServer.insertData.add(s);
                 writer.clear();
             }
