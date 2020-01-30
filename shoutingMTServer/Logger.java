@@ -25,13 +25,13 @@ public class Logger {
     public void log(String s) {
 
         try {
-            FileWriter fw = new FileWriter(this.logFile,true);
+            FileWriter fw = new FileWriter(this.logFile, true);
             String date = new Date().toString();
             fw.write(s);
             fw.write(System.lineSeparator());
             fw.close();
         } catch (IOException ex) {
-            System.err.println("Couldn't log this: "+s);
+            System.err.println("Couldn't log this: " + s);
         }
 
     }
