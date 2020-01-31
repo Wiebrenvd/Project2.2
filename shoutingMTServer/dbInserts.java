@@ -23,11 +23,12 @@ class Inserts implements Runnable {
                     for (int start = 0; start < templist.size(); start += size) {
                         int end = Math.min(start + size, templist.size());
                         List<String> sublist = templist.subList(start, end);
-
                         insert = new StringBuilder();
+
                         for (String s : sublist) {
                             insert.append(s).append("\n");
                         }
+
                         String s1 = insert.toString().trim();
                         String s2 = "DATE";
                         int i = (s1.indexOf(s2));

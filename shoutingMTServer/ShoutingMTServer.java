@@ -23,10 +23,6 @@ public class ShoutingMTServer {
             parser.setPriority(10);
             parser.start();
 
-            //Thread parser2 = new Thread(new Saxparser());
-            //parser2.setPriority(10);
-            //parser2.start();
-
             Thread insert = new Thread(new Inserts());
             insert.setPriority(10);
             insert.start();
@@ -34,7 +30,6 @@ public class ShoutingMTServer {
             //noinspection InfiniteLoopStatement
             while (true) {
                 connection = server.accept();
-                //System.err.println("New connection accepted..handing it over to worker thread");
                 Thread worker = new Thread(new Worker(connection));
                 worker.start();
             }

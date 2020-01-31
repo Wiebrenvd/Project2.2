@@ -25,7 +25,6 @@ class Saxparser implements Runnable {
                     if (data != null) {
                         src.setCharacterStream(new StringReader(data));
                         saxParser.parse(src, userhandler);
-
                     }
                 }
             }
@@ -95,16 +94,15 @@ class UserHandler extends DefaultHandler {
                            String localName, String qName) throws SAXException {
         if (qName.equalsIgnoreCase("measurement")) {
             String s = writer.toString();
-            if (s.contains("STN") && s.contains("DATE") && s.contains("TIME") && s.contains("TEMP") && s.contains("DEWP")
-                    && s.contains("STP") && s.contains("SLP") && s.contains("VISIB") && s.contains("WDSP") && s.contains("PRCP") && s.contains("SNDP") && s.contains("FRSHTT") && s.contains("CLDC") && s.contains("WNDDIR")) {
-                 System.out.println(s);
+            if (s.contains("STN") && s.contains("DATE") && s.contains("TIME") && s.contains("TEMP") && s.contains("DEWP") &&
+                s.contains("STP") && s.contains("SLP") && s.contains("VISIB") && s.contains("WDSP") && s.contains("PRCP") &&
+                s.contains("SNDP") && s.contains("FRSHTT") && s.contains("CLDC") && s.contains("WNDDIR")) {
+                System.out.println(s);
                 ShoutingMTServer.insertData.add(s);
                 writer.clear();
             } else {
                 writer.clear();
             }
-
-            //System.out.println("End Element :" + qName);
         }
     }
 
@@ -112,65 +110,47 @@ class UserHandler extends DefaultHandler {
     public void characters(char[] c, int start, int length) throws SAXException {
 
         if (stn) {
-
             writer.add("STN", new String(c, start, length));
             stn = false;
-
         } else if (date) {
             writer.add("DATE", new String(c, start, length));
-
             date = false;
         } else if (time) {
             writer.add("TIME", new String(c, start, length));
-
-
             time = false;
         } else if (temp) {
             writer.add("TEMP", new String(c, start, length));
-
             temp = false;
         } else if (dewp) {
             writer.add("DEWP", new String(c, start, length));
-
             dewp = false;
         } else if (stp) {
             writer.add("STP", new String(c, start, length));
-
             stp = false;
         } else if (slp) {
             writer.add("SLP", new String(c, start, length));
-
             slp = false;
         } else if (visib) {
             writer.add("VISIB", new String(c, start, length));
-
             visib = false;
         } else if (wdsp) {
             writer.add("WDSP", new String(c, start, length));
-
             wdsp = false;
         } else if (prcp) {
             writer.add("PRCP", new String(c, start, length));
-
             prcp = false;
         } else if (sndp) {
             writer.add("SNDP", new String(c, start, length));
-
             sndp = false;
         } else if (frshtt) {
             writer.add("FRHSTT", new String(c, start, length));
             frshtt = false;
         } else if (cldc) {
             writer.add("CLDC", new String(c, start, length));
-
             cldc = false;
         } else if (wnddir) {
             writer.add("WNDDIR", new String(c, start, length));
-
             wnddir = false;
-
         }
-
-
     }
 }
