@@ -14,7 +14,7 @@ public class Logger {
     }
 
     public Logger(String fileName) {
-        logFile = new File(fileName);
+        logFile = new File("/nfs/general/" + fileName);
     }
 
     public Logger(File f) {
