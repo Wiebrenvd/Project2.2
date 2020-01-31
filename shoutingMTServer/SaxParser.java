@@ -97,8 +97,8 @@ class UserHandler extends DefaultHandler {
             String s = writer.toString();
             if (s.contains("STN") && s.contains("DATE") && s.contains("TIME") && s.contains("TEMP") && s.contains("DEWP")
                     && s.contains("STP") && s.contains("SLP") && s.contains("VISIB") && s.contains("WDSP") && s.contains("PRCP") && s.contains("SNDP") && s.contains("FRSHTT") && s.contains("CLDC") && s.contains("WNDDIR")) {
-                // System.out.println(s);
-                ShoutingMTServer.insertData.add(s);
+                 System.out.println(s);
+                //ShoutingMTServer.insertData.add(s);
                 writer.clear();
             } else {
                 writer.clear();
@@ -158,8 +158,9 @@ class UserHandler extends DefaultHandler {
 
             sndp = false;
         } else if (frshtt) {
-            writer.add("FRSHTT", new String(c, start, length));
-
+            String s=new String(c, start, length);
+            float dd= Long.parseLong(s,2);
+            writer.add("FRHSTT", dd);
             frshtt = false;
         } else if (cldc) {
             writer.add("CLDC", new String(c, start, length));
